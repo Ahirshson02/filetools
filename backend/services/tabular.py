@@ -15,3 +15,6 @@ def jsonToExcel(data): #data may be a json body or a json file
     pd.DataFrame(parsed).to_excel(output, index=False)
     output.seek(0)
     return output #xlsx file
+
+def pdfToDocx(data):
+    
