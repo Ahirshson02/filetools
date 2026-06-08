@@ -28,6 +28,7 @@ def get_converter(source, target):
 class Conversion(Resource):
 
     def post(self):
+        print("request received")
         if request.is_json:
             body = request.get_json()
             source = body["source"]
@@ -35,11 +36,13 @@ class Conversion(Resource):
             data = body["data"]
 
         elif request.content_type.startswith("multipart/form-data"):
+            print("in elif")
             source = request.form["source"]
             target = request.form["target"]
             data = request.files["file"]
-
+            print("parsed data")
         else:
+            print("unsupported content")
             return {
                 "error": "Unsupported content type"
             }, 400
@@ -52,7 +55,11 @@ class Conversion(Resource):
        
 
 
-api.add_resource(Conversion, 'api/tabular')
+api.add_resource(Conversion, '/api/tabular')
+
+@app.route("/")
+def home():
+    return "<h1>Flask Rest API</h1>"
 
 
 if __name__ == '__main__':
