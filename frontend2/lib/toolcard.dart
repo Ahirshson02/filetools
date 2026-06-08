@@ -7,9 +7,9 @@ class ToolCard extends StatelessWidget {
     required this.title,      // Bold heading text shown below the icon
     required this.subtitle,   // Muted description text shown below the title
     this.onTap,               // Optional tap callback; wraps the card in an InkWell when provided
-    this.width,               // Card width; defaults to 180 — set to double.infinity for full-width
+    this.width,               //defaults to 180
     this.height,
-    this.iconBackgroundColor, // Background color of the icon container; defaults to a soft coral
+    this.iconBackgroundColor,
   });
  
   final Widget image;
