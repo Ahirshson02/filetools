@@ -4,7 +4,7 @@ from flask_cors import CORS
 
 import json, csv, os, requests
 
-from services import tabular
+from services import tabular, pdf
 import pandas
 
 app = Flask(__name__)
@@ -17,6 +17,7 @@ conversion_args.add_argument('target', type=str, required=True, help='Output for
 
 CONVERTERS = {
         ("json", "xlsx"): tabular.jsonToExcel,
+        ("pdf", "docx"): pdf.pdf_to_docx,
         #("csv", "xlsx"): CsvToExcelConverter(),
         #("xlsx", "json"): ExcelToJsonConverter(),
         #("xlsx", "csv"): ExcelToCsvConverter(),
@@ -55,7 +56,8 @@ class Conversion(Resource):
        
 
 
-api.add_resource(Conversion, '/api/tabular')
+api.add_resource(Conversion, '/api/convert')
+#api.add_resource(Conversion, '/api/pdf')
 
 @app.route("/")
 def home():

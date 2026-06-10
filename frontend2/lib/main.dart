@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'toolcard.dart';
 import 'routes.dart';
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //home: const MyHomePage(title: 'File Tools'),
-      routerConfig: router, //from routes.dart
+     routerConfig: router, //from routes.dart
     );
   }
 }
@@ -42,21 +43,21 @@ class _MyHomePageState extends State<MyHomePage> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        title: Row(
-          children: [
-            Text(widget.title, style: TextStyle(fontWeight: FontWeight.bold),),
-            SizedBox(width: width * 0.05),
-            IconButton(
-              onPressed: _dummyButton,
-              icon: Icon(Icons.home)), //go home/scroll up
-          TextButton.icon(
-              onPressed: _dummyButton,
-              label: Text("FileTools")) //go home/scroll up
-          ],
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      //   title: Row(
+      //     children: [
+      //       Text(widget.title, style: TextStyle(fontWeight: FontWeight.bold),),
+      //       SizedBox(width: width * 0.05),
+      //       IconButton(
+      //         onPressed: _dummyButton,
+      //         icon: Icon(Icons.home)), //go home/scroll up
+      //     TextButton.icon(
+      //         onPressed: _dummyButton,
+      //         label: Text("FileTools")) //go home/scroll up
+      //     ],
+      //   ),
+      // ),
       body: Container(
           color: Color(0xfff5f5fa),
           child: Column(
@@ -94,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //   featureBlock("PDF to Word", "Convert your PDF document to an editable Word document"),
                   ToolCard(
                       image: Icon(Icons.picture_as_pdf),
-                      onTap: _dummyButton,
+                      onTap: () => context.go('/pdf'),
                       title: "PDF to Word",
                       subtitle:
                           "Convert your PDF document to an editable Word document"),
