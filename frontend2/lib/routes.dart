@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend2/main.dart';
-import 'package:frontend2/tools/pdf/pdf2word.dart';
+import 'package:frontend2/tools/buttons/pdf2word.dart';
+import 'package:frontend2/tools/buttons/structure.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
@@ -22,6 +23,7 @@ final GoRouter router = GoRouter(
         GoRoute(path: '/', builder:(context, state) => const MyHomePage(title: "FileTools")),
         //GoRoute(path: 'data', builder(context, state) =>),
         GoRoute(path: '/pdf', builder:(context, state) => const PdfToWord()),
+        GoRoute(path: '/structure', builder:(context, state) => const StructureConverter())
       ]
     )
 

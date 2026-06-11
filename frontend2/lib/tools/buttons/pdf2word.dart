@@ -1,7 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend2/tools/pdf/fileupload.dart';
-import 'dart:io';
+import 'package:frontend2/tools/fileupload.dart';
 import 'dart:typed_data';
 import 'package:frontend2/api_serivce.dart';
 import 'dart:html' as html;
@@ -20,6 +19,16 @@ class _PdfToWordState extends State<PdfToWord> {
   Uint8List? selectedFile;
   String? selectedFileName;
 
+  @override
+  void initState(){
+    super.initState();
+  }
+  @override
+  void dispose(){
+    super.dispose();
+  }
+
+
   Future<void> pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(withData: true, allowMultiple: false);
     if (result != null){
@@ -35,7 +44,7 @@ class _PdfToWordState extends State<PdfToWord> {
         selectedFileName = result.files.single.name;
       });
     // final bytes = await selectedFile!.readAsBytes();
-    final response = await api.pdftoword(selectedFile!, selectedFileName ?? "");
+    final response = await api.convertFile(selectedFile!, selectedFileName ?? "", "pdf", "docx");
     downloadDocx(response);
     }
   }

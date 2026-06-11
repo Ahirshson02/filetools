@@ -3,13 +3,14 @@ import 'dart:isolate';
 import 'package:flutter/material.dart';
 
 class FileUploder extends StatefulWidget {
-  const FileUploder(
+  const FileUploder( //add a themecolor (Red for pdf, green for excel, etc?)
       {Key? key,
       required this.title,
       this.subtitle,
       this.backgroundColor,
       this.width,
       this.function,
+      this.themeColor,
       this.height})
       : super(key: key);
 
@@ -18,6 +19,7 @@ class FileUploder extends StatefulWidget {
   final Color? backgroundColor;
   final double? width;
   final double? height;
+  final Color? themeColor;
   final Future<void> Function()? function;
 
   @override
@@ -72,7 +74,7 @@ class _FileUploderState extends State<FileUploder> {
             icon: const Icon(Icons.insert_drive_file_outlined, size: 28, color: Colors.white),
             label: const Text('Choose files', style: TextStyle(fontSize: 28)),
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF6360C8),
+              backgroundColor: widget.themeColor ?? const Color(0xFF6360C8), //make a theme color?
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
               shape: const RoundedRectangleBorder(

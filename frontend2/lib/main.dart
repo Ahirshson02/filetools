@@ -104,12 +104,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   ToolCard(
                       image: Icon(Icons.table_rows),
-                      onTap: _dummyButton,
+                      onTap: () => context.go('/structure'),
                       title: "Structured Data",
                       iconBackgroundColor:
                           const Color.fromARGB(255, 125, 196, 66),
                       subtitle:
-                          "Convert between structured formats (JSON, Excel, CSV)"),
+                          "Convert between structured formats (JSON, Excel, CSV)",
+                  ),
                   SizedBox(
                     width: width * 0.08,
                   ),

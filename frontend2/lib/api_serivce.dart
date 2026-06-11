@@ -9,12 +9,12 @@ class ApiSerivce {
   final client = Client();
   String baseurl = "http://localhost:5000";
 
-  Future<Uint8List> pdftoword(Uint8List fileBytes, String filename) async{
+  Future<Uint8List> convertFile(Uint8List fileBytes, String filename, String source, String target) async{
     final request = MultipartRequest('POST', Uri.parse('$baseurl/api/convert'));
     final multiipartFile = MultipartFile.fromBytes('file', fileBytes, filename: filename);
 
     request.files.add(multiipartFile);
-    request.fields.addAll({"source": 'pdf', "target": "docx"});
+    request.fields.addAll({"source": source, "target": target});
     Uint8List? bytes;
     // print("MADE IT TO API CALL");
     // return fileBytes;
@@ -33,7 +33,7 @@ class ApiSerivce {
       client.close();
       //convert response to File and return
     }
-    print("returning from pdfToWord");
+    print("returning $target file");
     return bytes!;
   }
 
